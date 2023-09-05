@@ -1,0 +1,44 @@
+* python -m venv venv
+* venv\Scripts\activate
+* pip install django
+* django-admin startproject store .
+* py manage.py startapp home
+* py manage.py migrate
+* add the name of the app to installed app on the settings.py file, 'home.apps.HomeConfig',
+* add the include module in the urls.py file include
+* add the name of the app under the urlpatterns in the urls.py file, path('', include('home.urls'))
+* create the urls.py file under the app folder
+* create a module under the urls.py file, from django.urls import path
+* import the view, from . import views 
+* call out the index function under the urls.py file, urlpatterns = [
+    #path('browser', views, name= "template"),
+    path('', views.index, name= "index"),
+]
+* create the index function in the views.py file, def index(request):
+    return HttpResponse("Hello World!")
+* py manage.py runserver
+
+M = Models
+V = view
+T = template
+
+Models helps you to structure your database
+fields in your Models:
+-Charfield
+-Textfield
+-Urlfield
+-emailfield
+-slugfield
+-imagefield
+-decimalfield
+-floatfield
+
+Views helps to apply functionalities on the login
+CRUD operations
+C= create(persisting data to the database)method =POST
+R= Read(trying to get items from your db i.e query the db)method =GET (all, get, filter)
+U= Update(this means to modify items in your db or make changes)method = PUT/PATCH
+D= delete(this means to remove or delete items in the db)method = DELETE
+
+
+urls = creates a path between views and template

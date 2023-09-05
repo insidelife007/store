@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block navbar %} {% include 'navbar.html' %} {% endblock navbar %}
+
+{% block carousel %} {% include 'carousel.html' %} {% endblock carousel %}
+
+{% block content %}
+
+
+{% if searched_items %}
+  
+  
+    
+<div class="container product">
+    <h1 class="text-center">All {{search}}</h1>
+    <div class="row mb-5">
+      
+      {% for cars in searched_items %}
+      <div class="col-12 col-md-6 col-lg-3 pt-3">
+        <div class="card text-center">
+            <img src="{{cars.img.url}}" class="card-img-top" alt="..." style="height: 250px;">
+            <div class="card-body">
+              <h5 class="card-title">{{cars.name}}</h5>
+              <p class="card-text">${{cars.price}}</p>
+              <a href="{% url 'details' cars.slug %}" class="btn btn-warning">Add to Cart</a>
+            </div>
+        </div>  
+    </div>
+      {% endfor %}
+        
+      </div>
+      </div>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </nav>
+      </div>
+
+      {% else %}
+      <p class="mb-5 mt-5 text-center fs-5">You searched for <b>{{search}}</b> not found</p>
+      {% endif %}
+
+{% endblock content %}
+    
+
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}
+    
